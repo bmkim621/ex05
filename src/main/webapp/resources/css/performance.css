@@ -1,0 +1,566 @@
+/* 공연정보 타이틀 부분 */
+div.container-fluid.perfContainer {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+}
+
+div.container-fluid div#bgWrapper {
+	background: url('../images/sub_visual_1.jpg') no-repeat;
+	height: 500px;
+	background-position: center center;
+}
+
+div.container-fluid div#bgWrapper div.headline {
+	width: 200px;
+	overflow: hidden;
+	position: absolute;
+	top: 40%;
+	left: 45%;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	padding-top: 28px;
+}
+
+div.container-fluid div#bgWrapper p.korHeadline {
+	color: white;
+	letter-spacing: -1.2px;
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 0.5em;
+}
+
+div.container-fluid div#bgWrapper p.engHeadline {
+	letter-spacing: -0.8px;
+	font-size: 22px;
+	font-style: italic;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== 공연정보 등록 폼 ===== */
+div.container-fluid.contentsWrapper {
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	border: 2px solid lightblue;
+	background-color: #8e9eab;
+}
+
+div.container-fluid.contentsWrapper div.formWrapper {
+	width: 50%;
+	margin: 0 auto;
+	padding: 20px;
+	border: 2px solid pink;
+	background-color: #fff;
+}
+
+.f1 {
+	letter-spacing: -0.8px;
+}
+
+/* ===== 파일 업로드 ===== */
+.image-preview-input {
+	position: relative;
+	overflow: hidden;
+	margin: 0px;
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.image-preview-input-title {
+	margin-left: 2px;
+}
+
+/* 공연시작일, 종료일 */
+div.pickDateWrapper>input {
+	border: 1px solid #ced4da;
+	border-radius: .254em;
+}
+
+/* ===== 콤보박스 ===== */
+.select {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 325px;
+	color: #cccccc;
+	vertical-align: middle;
+	text-align: left;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.select .placeholder {
+	position: relative;
+	display: block;
+	background-color: #393d41;
+	z-index: 1;
+	/* padding: 1em;
+	border-radius: 2px; */
+	cursor: pointer;
+}
+
+.select .placeholder:hover {
+	background: #34383c;
+}
+
+.select .placeholder:after {
+	position: absolute;
+	right: 1em;
+	top: 50%;
+	transform: translateY(-50%);
+	content: "\f107";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 600;
+	z-index: 10;
+}
+
+.select.is-open .placeholder:after {
+	content: '\f106';
+}
+
+.select.is-open ul {
+	display: block;
+}
+
+.select.select--white .placeholder {
+	background: #fff;
+	color: #999;
+}
+
+.select.select--white .placeholder:hover {
+	background: #fafafa;
+}
+
+.select ul {
+	display: none;
+	position: absolute;
+	overflow: hidden;
+	overflow-y: auto;
+	width: 100%;
+	background: #fff;
+	border-radius: 2px;
+	top: 100%;
+	left: 0;
+	list-style: none;
+	margin: 5px 0 0 0;
+	padding: 0;
+	z-index: 100;
+	max-height: 120px;
+	border: 1px solid #efefef;
+}
+
+.select ul li {
+	display: block;
+	text-align: left;
+	padding: 0.8em 1em 0.8em 1em;
+	color: #999;
+	cursor: pointer;
+}
+
+.select ul li:hover {
+	background: #4ebbf0;
+	color: #fff;
+}
+
+.select.select--white {
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	margin: 0;
+	padding: .375rem .75rem;
+	width: 80%;
+}
+
+/* ========= 라디오버튼 ======== */
+.radio label:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.radio .cr {
+	position: relative;
+	display: inline-block;
+	border: 1px solid #a9a9a9;
+	border-radius: .25em;
+	width: 1.3em;
+	height: 1.3em;
+	float: left;
+	margin-right: .5em;
+	margin-top: .2em;
+}
+
+.radio .cr {
+	border-radius: 50%;
+}
+
+.radio .cr .cr-icon {
+	position: absolute;
+	font-size: .8em;
+	line-height: 0;
+	top: 50%;
+	left: 20%;
+}
+
+.radio .cr .cr-icon {
+	/* margin-left: 0.04em; */
+	
+}
+
+.radio label input[type="radio"] {
+	display: none;
+}
+
+.radio label input[type="radio"]+.cr>.cr-icon {
+	transform: scale(3) rotateZ(-20deg);
+	opacity: 0;
+	transition: all .3s ease-in;
+}
+
+.radio label input[type="radio"]:checked+.cr>.cr-icon {
+	transform: scale(1) rotateZ(0deg);
+	opacity: 1;
+}
+
+.radio label input[type="radio"]:disabled+.cr {
+	opacity: .5;
+}
+
+/* ===== 추가버튼 ===== */
+div#btnWrap {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+div#btnWrap input#btnAddPerf {
+	letter-spacing: -0.8px;
+}
+
+/* ============= 공연안내 페이지 ================== */
+div.container-fluid.perfInfoWrapper {
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	/* border: 2px solid lightblue;
+	background-color: #8e9eab; */
+}
+
+div.container-fluid.perfInfoWrapper div.listWrapper {
+	width: 80%;           
+	margin: 0 auto;
+	padding: 20px;
+	/* border: 2px solid pink;
+	background-color: #fff; */
+	position: relative;
+}
+
+/* ===== 공연 안내 연도 선택 ===== */
+.btn.dropdown-toggle.btn-light{
+	border: 1px solid #ccc;
+	margin-left: 10px;
+}
+
+.text{
+	padding-left: 5px;
+}
+
+.dropdown-item.active{
+	color: #3d49a2;
+	background-color: white;   
+}
+
+/* ===== 공연 안내 월 선택 ===== */
+div.searchWrap{
+	position: relative;
+	/* border: 2px solid violet; */
+	padding: 10px;   
+	width: 90%;
+	margin: 0 auto;          
+}
+
+div.selectMonthWrapper{
+	width: 85%;               
+	display: inline-block;
+	margin-left: 40px;  
+	position: absolute;
+	overflow: hidden;
+	top: 10px;                    
+}
+
+div.selectMonthWrapper ul.monthList{
+	list-style: none;
+	width: 100%;                   
+	height: 38px;       
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+
+div.selectMonthWrapper ul.monthList li{
+	float: left;
+	display: inline-block;
+	border-left: 1px solid #ccc;
+	width: 8.3%;                                 
+	height: 38px;                  
+}
+
+div.selectMonthWrapper ul.monthList li:first-child{
+	border: none;
+}
+
+div.selectMonthWrapper ul.monthList li a{
+	width: 78px;
+	height: 38px;
+	line-height: 38px;  
+	text-decoration: none;
+	color: #4d4d4d;
+	font-size: 16px;  
+	letter-spacing: -0.5px;   
+} 
+
+
+/* ===== 공연 안내 카테고리 선택 ===== */
+div.perfCategoryWrapper{
+	clear: both;
+	width: 96.5%;                                                     
+	margin-left: 10px;
+	margin-top: 25px;   
+}
+
+ul.perfCategory{
+	list-style: none;
+	width: 100%;
+	height: 50px;
+	border: 1px solid #ddd;
+	margin: 0;
+	padding: 0;
+}
+
+ul.perfCategory li{
+	float: left;
+	width: 20%;               
+	height: 49px;
+	line-height: 49px;
+	border-left: 1px solid #ddd;
+}
+
+ul.perfCategory li:first-child {
+	border: none;
+}
+
+ul.perfCategory li a{
+	display: inline-block;
+	width: 100%;
+	height: 48px;
+	line-height: 48px;
+	text-decoration: none;
+	color: #626262;
+	font-size: 17px;
+	letter-spacing: -0.8px;
+}
+
+/* ===== 검색된 공연목록 나오는 곳 ===== */
+div.resultSearchWrapper{
+	/* border: 2px solid salmon; */
+	width: 90%;        
+	padding: 20px;
+	margin: 10px auto;  
+}
+
+div.showListWrapper{
+	display: inline-block;
+	width: 280px;
+	height: 360px;
+	position: relative;
+	padding: 5px 5px 0 5px;
+	border: 1px solid #ccc;
+	text-align: center;
+	margin-right: 32.59px;
+	margin-bottom: 25px;                                                                
+}
+
+div.show-img-box{
+	width: 268px;  
+}
+
+div.show-img-box img{
+	width: 268px;         
+	position: absolute;
+	top: 5px;
+	left: 5px;          
+}
+
+div.show-item-details{     
+	background-color: white;
+	width: 268px;
+	height: 70px;        
+	padding: 10px;   
+	position: absolute;
+	bottom: 0;          
+	
+}
+
+div.show-item-details span.show-name{
+	display: block;
+	font-size: 18px;
+	letter-spacing: -0.8px;
+	font-weight: bold;
+	height: 25px;  
+	line-height: 25px;      
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;     
+	white-space: nowrap;
+}
+
+div.show-item-details span.show-date{
+	display: block;
+	font-size: 15px;
+	letter-spacing: -0.8px;
+	color: #5D5D5D;
+}
+
+a.goReadPage{
+	color: #000!important;
+}
+
+a.goReadPage:hover{
+	text-decoration: underline;
+	color: #3d49a2!important; 
+}
+
+/* ================ 공연 상세보기 페이지 ================== */
+h2{
+	margin-top: 20px;      
+	margin-bottom: 30px;
+	letter-spacing: -0.8px;
+}
+
+div.container-fluid.readShowWrapper{
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	/* border: 2px solid lightblue; */
+	/* background-color: #8e9eab;	 */
+}
+
+div.container-fluid.readShowWrapper div.readWrapper {
+	width: 80%;           
+	margin: 0 auto;
+	padding: 20px;
+/* 	border: 2px solid pink; */
+	background-color: #fff;
+	position: relative;
+}
+
+div.container-fluid.readShowWrapper div.readWrapper div.showDetails{
+/* 	border: 2px solid green; */
+	padding: 30px;     
+	width: 80%;
+	margin: 0 auto;      
+	overflow: hidden;
+}
+
+/* 이미지 */
+div.showDetails div.read-img-box{
+/* 	border: 2px solid blue; */
+	display: inline-block;
+	width: 300px;
+	float: left;
+	text-align: center;
+	margin-left: 40px;     
+}
+
+div.showDetails div.read-img-box img{
+	width: 280px;
+}
+
+/* 버튼 */
+div.showDetails div.btnWrapper{
+/* 	border: 2px solid salmon; */
+	display: inline-block;
+	width: 60%;
+	margin-left: 50px;
+	margin-top: 10px;
+	padding-left: 15px;           
+}
+
+div.showDetails div.btnWrapper a{
+	margin-right: 10px;
+}
+
+/* 내용 */
+div.showDetails div.read-contents{
+/* 	border: 2px solid red;  */ 
+	display: inline-block;
+	width: 60%;
+	margin-left: 50px;
+	padding: 10px 20px 0 20px;        
+}
+
+div.read-contents p.read-category{
+	color: #ff9900;
+	font-weight: bold;
+	letter-spacing: -0.8px;
+	margin-bottom: 5px;
+}
+
+div.read-contents p.read-name{
+	color: #2a3072;
+	font-weight: bold;
+	font-size: 22px;
+	letter-spacing: -0.8px;
+}
+
+div.read-contents ul{
+	list-style: none;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+div.read-contents ul li{
+	float: left;
+	width: 100%;   
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+div.read-contents ul li p{
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+div.read-contents p.spanTitle{
+	color: #868691;
+	letter-spacing: -0.8px;
+	width: 70px;                 
+}
+
+div.read-contents p.spanContents{
+	color: #62626f;
+	letter-spacing: -0.8px;
+	margin-left: 10px;
+}

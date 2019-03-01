@@ -163,7 +163,7 @@
     		<groupId>org.springframework</groupId>	
     		<artifactId>spring-tx</artifactId>	<!-- 스프링 AOP 트랜잭션 -->
    		 <version>4.3.2.RELEASE</version>	<!-- 스프링 버전과 동일해야함 -->
-		</dependency>
+		</dependency>  
 		
 		<dependency>
    			<groupId>org.springframework</groupId>

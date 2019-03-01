@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.mapper.NoticeMapper">
+
+	<!-- 공지사항 리스트 -->
+	<select id="noticeListAll" resultType="NoticeVO">
+		select * from notice;
+	</select>
+		
+	
+	<!-- #{pageStart}는 Criteria에서 함수인 getPageStart가 호출돼야하는데 el처럼 get은 떼고 첫번째 대문자는 소문자로 바꾼다. -->
+	<select id="listCriteria" resultType="NoticeVO">
+		select * from notice
+		order by notice_no desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	
+	<!-- 게시물 전체 갯수 -->
+	<select id="totalCount" resultType="int">
+		select count(notice_no) from notice
+	</select>
+	
+	
+	<!-- 검색기능 구현 -->
+	<sql id="search">
+		<if test="searchType == 't'.toString()">
+			where  is_notice = 0   and  title like CONCAT('%', #{keyword}, '%') 
+		</if>
+		<if test="searchType == 'c'.toString()">
+			where is_notice = 0   and content like CONCAT('%', #{keyword}, '%')  
+		</if>
+		<if test="searchType == 'tc'.toString()">
+			where is_notice = 0   and title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%')   
+		</if>
+		<if test="searchType == ''">
+		    where is_notice = 0  
+		</if>
+		<if test="searchType == null">
+		    where is_notice = 0  
+		</if>
+	</sql>
+	  
+	
+	<!-- 검색 -->
+	<select id="listSearch" resultType="NoticeVO">
+		select * from notice
+		<include refid="search"/>	 
+		order by notice_no desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<!-- is_notice가 1인 것만 -->
+	<select id="listWithIsNotice" resultType="NoticeVO">
+		select * from notice where is_notice = 1 order by notice_no desc
+	</select>
+	
+	
+	<!-- 검색한 게시물의  전체 갯수 -->
+	<select id="searchTotalCount" resultType="int">
+		select count(notice_no) from notice
+		<include refid="search"></include>
+	</select>     
+	
+	
+	<!-- 공지사항 읽기 -->
+	<select id="read" resultType="NoticeVO">
+		select * from notice
+		where notice_no = #{noticeNo}
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="increaseViewCnt">
+		update notice
+		set view_cnt = view_cnt + 1
+		where notice_no = #{noticeNo}
+	</update>
+	
+	<insert id="register" parameterType="NoticeVO">
+		insert into notice(content, title, is_notice, member_code, writer) values
+		(#{content}, #{title}, #{isNotice}, #{memberCode}, #{writer})
+	</insert>
+	
+	          
+	                   
+	<!-- 공지사항 작성 때 필요한 값들 가져오기 -->
+	<resultMap type="MemberVO" id="resultMem">
+		<!-- <id column="show_code" property="showCode"/> -->
+		<result column="grade_code" property="gCode.gradeCode"/>
+		<result column="grade_name" property="gCode.gradeName"/>
+	</resultMap>       
+	
+	<select id="getWriter" resultMap="resultMem">                       
+		select member_code, member_name, id, isMember, g.grade_code, g.grade_name
+		from tbl_member left join grade g on tbl_member.grade_code = g.grade_code
+		where id = #{id}    
+	</select>
+	
+	
+	<!-- 공지사항 수정하기 -->
+	<update id="update" parameterType="NoticeVO">
+		update notice
+		set content = #{content}, title = #{title}, is_notice = #{isNotice}
+		where notice_no = #{noticeNo}
+	</update>
+	
+	<!-- 공지사항 삭제하기 -->
+	<delete id="delete">
+		delete from notice
+		where notice_no = #{noticeNo}
+	</delete>
+	
+	<!-- 공지사항 첨부파일 등록할 때 필요 -->
+	<select id="selectLastNo" resultType="int">
+		select last_insert_id()
+	</select>
+	
+	<!-- 첨부파일들 가지고오기 -->
+	<select id="getAttachList" resultType="NoticeAttachVO">
+		select * from notice_attach
+		where notice_no = #{noticeNo}
+	</select>
+</mapper>

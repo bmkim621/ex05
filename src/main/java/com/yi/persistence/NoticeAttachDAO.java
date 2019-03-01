@@ -15,4 +15,7 @@ public interface NoticeAttachDAO {
 	public List<NoticeAttachVO> findByNoticeNo(int noticeNo);
 	
 	public void deleteAll(int noticeNo);
+	
+	//첨부파일 목록 가지고 오기
+	public List<NoticeAttachVO> getOldFiles();
 }

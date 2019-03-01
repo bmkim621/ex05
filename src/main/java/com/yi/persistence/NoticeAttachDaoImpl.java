@@ -38,4 +38,10 @@ public class NoticeAttachDaoImpl implements NoticeAttachDAO {
 		sqlSession.delete(namespace + ".deleteAll", noticeNo);
 	}
 
+	@Override
+	public List<NoticeAttachVO> getOldFiles() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".getOldFiles"); 
+	}
+
 }

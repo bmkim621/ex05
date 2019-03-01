@@ -19,5 +19,10 @@
 		delete from notice_attach
 		where notice_no = #{noticeNo}
 	</delete>
+	
+	<select id="getOldFiles" resultType="NoticeAttachVO">
+		select * from notice_attach
+		where upload_path = DATE_FORMAT(date_add(now(), interval -1 day), '%Y\%m\%d')
+	</select>
 
 </mapper>

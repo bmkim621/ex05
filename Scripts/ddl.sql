@@ -107,7 +107,7 @@ CREATE TABLE notice_attach (
 	upload_path VARCHAR(200) NOT NULL COMMENT '업로드경로', -- 업로드경로
 	file_name   VARCHAR(100) NOT NULL COMMENT '파일이름', -- 파일이름
 	notice_no   INT(11)      NOT NULL COMMENT '공지사항번호', -- 공지사항번호
-	file_type   CHAR(1)      NULL     DEFAULT I COMMENT '이미지 파일인지 구분' -- 파일종류
+	file_type   CHAR(1)      NULL     DEFAULT 'I' COMMENT '이미지 파일인지 구분' -- 파일종류
 )
 COMMENT '공지사항파일';
 
@@ -175,7 +175,7 @@ ALTER TABLE reply
 CREATE TABLE review (
 	review_no        INT(11)      NOT NULL COMMENT '번호', -- 후기번호
 	review_content   TEXT         NOT NULL COMMENT '내용', -- 내용
-	review_post_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '작성일', -- 작성일
+	review_post_date TIMESTAMP    NOT NULL DEFAULT now() COMMENT '작성일', -- 작성일
 	review_view_cnt  INT(11)      NULL     COMMENT '조회수', -- 조회수
 	review_title     VARCHAR(200) NOT NULL COMMENT '제목', -- 제목
 	review_writer    VARCHAR(20)  NOT NULL COMMENT '작성자' -- 작성자
@@ -195,7 +195,7 @@ CREATE TABLE review_attach (
 	review_no          INT(11)      NOT NULL COMMENT '번호', -- 후기번호
 	review_upload_path VARCHAR(200) NOT NULL COMMENT '업로드경로', -- 업로드경로
 	review_file_name   VARCHAR(100) NOT NULL COMMENT '파일이름', -- 파일이름
-	review_file_type   CHAR(1)      NOT NULL DEFAULT I COMMENT '파일종류' -- 파일종류
+	review_file_type   CHAR(1)      NOT NULL DEFAULT 'I' COMMENT '파일종류' -- 파일종류
 )
 COMMENT '공연관람후기파일';
 
